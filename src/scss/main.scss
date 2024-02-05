@@ -28,7 +28,7 @@ html {
 .arrow{
     width: 3%;
     margin-left: 66%;
-    margin-top: 2%;
+    margin-top: 0.5%;
     animation: arrowAnimation 1s infinite;
 }
 
@@ -40,6 +40,7 @@ html {
     background-color: #32A9FF;
     border-radius: 30px;
     padding: 0.5% 3%;
+    border:none;
 }
 
 @keyframes arrowAnimation {
