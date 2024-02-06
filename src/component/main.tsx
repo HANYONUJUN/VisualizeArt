@@ -16,7 +16,7 @@ function Main() {
         </p>
       
         <img src={Arrow} className='arrow'/>
-       <Link to="/upload"><button className='start_btn'>분석하기</button></Link>
+     <Link to='/upload'><button className='start_btn'>분석하기</button></Link>
     </div>
   );
 }

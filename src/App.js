@@ -1,18 +1,17 @@
-import './App.css';
 import React from 'react';
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import Main from "./component/main";
-import Upload from './component/upload';
+import Main from "./component/main.tsx";
+import Upload from './component/upload.tsx';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 
 function App(){
   return (
-    <div>
-      <Router>
-        <Route component={Main} path="/" exact={true} />
-        <Route component={Upload} path="/upload" />
-      </Router>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Main/>} />
+        <Route path="/upload" element={<Upload/>} />
+      </Routes>
+    </Router>
   );
 }
 
