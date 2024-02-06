@@ -8,7 +8,10 @@ function Main() {
   return (
     <div className="main">
         <div className="main_banner">
+          <div className='icon'>
             <img src={Art}/>
+            <p className="icon_address">Designed by Freepik</p>
+          </div>
         </div>
 
         <p className='main_title'>
