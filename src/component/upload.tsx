@@ -1,12 +1,17 @@
 import React, {Component} from 'react';
-
+import '../scss/upload.scss';
 
 class Upload extends Component {
+
+
+
+
     render() {
         return(
-            <div>
-                
-            </div>
+          <>
+            <div className='upload_image_view'></div>
+           
+          </>
         )
     }
 };
