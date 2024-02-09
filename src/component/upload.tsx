@@ -1,8 +1,9 @@
 import React from 'react';
 import { useState } from 'react';
+import Color ,{Palette} from "color-thief-react";
 import '../scss/upload.scss';
 
-
+const Loading = () => <div>Loading...</div>;
 export default function Upload() {
 
   const [imageSrc, setImageSrc]: any = useState(null);
@@ -22,6 +23,7 @@ export default function Upload() {
 
   return(
           <>
+          <div className='lmage_upload'>
             <div className='upload_image_view'
                 style={{
                   backgroundImage: `url(${imageSrc})`,
@@ -39,7 +41,40 @@ export default function Upload() {
               id="input-file"
               onChange={e => onUpload(e)}
               style={{display:'none'}}
-            />         
+            />
+          </div>    
+
+            <div className='image_color_value'>
+             <Color src={imageSrc} crossOrigin='anonymous' format="hex">
+              {({data, loading}) => {
+                 if(loading) return <Loading />;
+                 return(
+                    <div>
+                       Predominant color: <strong>{data}</strong>
+                    </div>
+                )
+             }}
+            </Color>
+            <br/>
+
+            <Palette src={imageSrc} crossOrigin='anonymous' format="hex" colorCount={4}>
+             {({data, loading})=>{
+                if(loading) return <Loading />;
+                return (
+                  <div>
+                    Palette:
+                    <ul>
+                      {data && data.map((color, index)=>(
+                        <li key={index} style={{ color: color}}>
+                          <strong>{color}</strong>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                );
+              }}
+             </Palette>
+            </div>
           </>
         )
     };
