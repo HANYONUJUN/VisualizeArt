@@ -9,9 +9,14 @@ export default function Upload() {
   const [imageSrc, setImageSrc]: any = useState(null);
 
   const onUpload = (e:any) => {
+
       const file = e.target.files[0];
       const reader = new FileReader();
-      reader.readAsDataURL(file);
+      
+      //이미지를 업로드 한 상태에서 취소 버튼을 누르면 e.target.files[0]이 1에서 0으로 변경이 되어서 조건문으로 에러를 방지
+      if(file) {
+        reader.readAsDataURL(file);
+      }
 
       return new Promise<void>((resolve)=>{
         reader.onload= () => {
@@ -34,7 +39,7 @@ export default function Upload() {
              ></div>
             
 
-            <label className="input-file-button" for="input-file">upload</label>
+            <label className="input-file-button" htmlFor="input-file">upload</label>
             <input
               accept='image/*'
               multiple type="file"
