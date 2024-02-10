@@ -66,16 +66,11 @@ export default function Upload() {
              {({data, loading})=>{
                 if(loading) return <Loading />;
                 return (
-                  <div>
-                    Palette:
-                    <ul>
+                  <>
                       {data && data.map((color, index)=>(
-                        <li key={index} style={{ color: color}}>
-                          <strong>{color}</strong>
-                        </li>
+                        <div id='palette_list' key={index} style={{ backgroundColor: color, height: '100px', width: '100px', borderRadius: '50%' }}></div>
                       ))}
-                    </ul>
-                  </div>
+                  </>
                 );
               }}
              </Palette>
