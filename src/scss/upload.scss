@@ -1,20 +1,21 @@
 .upload_image_view{
-    width: 30%;
+    width: 35%;
     padding: 18% 0%;
-    margin-top: 5%;
-    margin-left: 15%;
+    margin-top: 2%;
+    margin-left: 33%;
     box-shadow: 0px 12px 50px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
 }
 
 .input-file-button{
-    padding: 25px 5%;
+    padding: 2.2% 1.08%;
     background-color:#180950;
-    border-radius: 50px;
+    border-radius: 50%;
     color: rgb(255, 255, 255);
     cursor: pointer;
-    margin-left: 22.6%;
+    margin-left: 30%;
     font-size: xx-large;
     font-weight: 600;
+    margin-top: -12%;
 
     &:hover{
         background-color:#002ead;
@@ -24,11 +25,35 @@
 
 .image_color_value{
     margin-left: 55%;
-    margin-top: -31%;
+    margin-top: -1%;
     font-size: xxx-large;
 
     #palette_list{
         display: inline-flex;
         
     }
+}
+
+.click-button {
+    transition: all 0.5s;
+    padding: 3% 1.09%;
+    border-radius: 50%;
+    font-size: xx-large;
+    font-weight: 700;
+    margin-left: 44.5%;
+    border: 1px solid #cfcfcf;
+  }
+  
+  .click-button.active {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+
+  .result_slider{
+    margin-top: 0.001%;
+    margin-left: 32%;
+    background-color: #cfcfcf;
+    border: none;
+    width: 36%;
+    padding: 0.01%;
 }
