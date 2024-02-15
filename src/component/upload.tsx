@@ -29,8 +29,8 @@ export default function Upload() {
   }
 
   const slideAnimation = useSpring({
-    from: { transform: 'translate3d(0,-100%,0)' },
-    to: { transform: `translate3d(0,${showColorInfo ? '0%' : '-100%'},0)` },
+    from: { transform: 'translate3d(100%,0,0)' },
+    to: { transform: `translate3d(${showColorInfo ? '0%' : '100%'},0,0)` },
   });
 
   return (
@@ -47,7 +47,8 @@ export default function Upload() {
           }}
         >
 
-<button className={`click-button ${showColorInfo ? 'active' : ''}`} onClick={handleClick}>Click</button>
+        <button className={`click-button ${showColorInfo ? 'active' : ''}`} onClick={handleClick}>Click</button>
+        
         </div>
 
         <label className="input-file-button" htmlFor="input-file">upload</label>
@@ -68,17 +69,18 @@ export default function Upload() {
               if(loading) return <Loading />;
               return (
                 <div>
-                  Predominant color: <strong>{data}</strong>
+                  Predominant color <strong>{data}</strong>
                 </div>
               )
             }}
           </Color>
           <br/>
-          <Palette src={imageSrc} crossOrigin='anonymous' format="hex" colorCount={6}>
+          <Palette src={imageSrc} crossOrigin='anonymous' format="hex" colorCount={4}>
             {({data, loading})=>{
               if(loading) return <Loading />;
               return (
                 <>
+                <div>Palette color</div>
                   {data && data.map((color, index)=>(
                     <div id='palette_list' key={index} style={{ backgroundColor: color, height: '100px', width: '100px', borderRadius: '50%' }}></div>
                   ))}
