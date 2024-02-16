@@ -25,6 +25,10 @@ export default function Upload() {
   }
 
   const handleClick = () => {
+    if(imageSrc === null) {
+      alert("이미지를 먼저 업로드해주세요.");
+      return;
+    }
     setShowColorInfo(!showColorInfo); // 'Click' 버튼을 누르면 색상 정보를 보여줍니다.
   }
 
