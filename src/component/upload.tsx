@@ -9,7 +9,7 @@ const Loading = () => <div>Loading...</div>;
 export default function Upload() {
   const [imageSrc, setImageSrc]:any = useState(null);
   const [showColorInfo, setShowColorInfo] = useState(false);
-
+  
   const onUpload = (e) => {
     const file = e.target.files[0];
     const reader = new FileReader();
@@ -20,7 +20,7 @@ export default function Upload() {
 
     reader.onload= () => {
       setImageSrc(reader.result);
-      setShowColorInfo(false); // 이미지를 새로 업로드하면 색상 정보를 숨깁니다.
+      setShowColorInfo(false); // 이미지를 새로 업로드하면 색상 정보를 숨김.
     };
   }
 
@@ -29,7 +29,7 @@ export default function Upload() {
       alert("이미지를 먼저 업로드해주세요.");
       return;
     }
-    setShowColorInfo(!showColorInfo); // 'Click' 버튼을 누르면 색상 정보를 보여줍니다.
+    setShowColorInfo(!showColorInfo); // 'Click' 버튼을 누르면 색상 정보를 보여줌.
   }
 
   const slideAnimation = useSpring({
@@ -73,7 +73,8 @@ export default function Upload() {
               if(loading) return <Loading />;
               return (
                 <div>
-                  Predominant color <strong>{data}</strong>
+                  Predominant color 
+                  <strong>{data}</strong>
                 </div>
               )
             }}
@@ -86,7 +87,7 @@ export default function Upload() {
                 <>
                 <div>Palette color</div>
                   {data && data.map((color, index)=>(
-                    <div id='palette_list' key={index} style={{ backgroundColor: color, height: '100px', width: '100px', borderRadius: '50%' }}></div>
+                    <div id='palette_list' key={index} style={{ backgroundColor: color, height: '70px', width: '70px', borderRadius: '50%' }}></div>
                   ))}
                 </>
               );
