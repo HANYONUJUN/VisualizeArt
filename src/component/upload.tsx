@@ -1,10 +1,16 @@
 import React from 'react';
-import { useState } from 'react';
-import {Color , Palette} from "color-thief-react";
+import { useState, useEffect, useRef } from 'react';
+import { Color , Palette } from "color-thief-react";
 import { useSpring, animated } from 'react-spring';
+import { Pie } from 'react-chartjs-2';
+import { ArcElement, CategoryScale, Chart as ChartJS, PieController } from 'chart.js';
 import '../scss/upload.scss';
 
 const Loading = () => <div>Loading...</div>;
+ChartJS.register(ArcElement, CategoryScale, PieController); // Chart.js v3에서부터 사용되는 요소들
+// ArcEleement: 차트에서 호(arc)를 그리는데 사용되는 클래스, 파이 차트, 도넛 차트 등 섹션을 그리는데 사용
+// CategoryScale: 차트의 축(scale)을 그리는데 사용되는 클래스, 카테고리 형태의 데이터를 표시하는데 사용
+// PieController: 파이 차트를 제어하는데 사용되는 클래스, 파이 차트의 데이터를 관리하고, 차트를 그리는데 필요한 요소들 조정
 
 export default function Upload() {
   const [imageSrc, setImageSrc]:any = useState(null);
@@ -37,6 +43,34 @@ export default function Upload() {
     to: { transform: `translate3d(${showColorInfo ? '0%' : '100%'},0,0)` },
   });
 
+  // 각 색상의 비율을 동일하게 표시하는 파이 차트를 생성하는 함수형 ract 컴포넌트
+  function ColorChart({ colors }) {
+    // charRef라는 참조를 생성 , 차트의 인스턴스를 가리키는데 사용
+    const chartRef = useRef<ChartJS | null>(null);
+
+    // 컴포넌트가 언마운트되기 전에 실행되는 클린업 함수 정의
+    // 차트의 인스턴스가 있다면 그 인스턴스를 파괴
+    // 언마운트 시 메모리 누수 방지
+    useEffect(() => {
+      return () => {
+        if (chartRef.current) {
+          chartRef.current.destroy();
+        }
+      };
+    }, []);
+
+    const data ={ // 차트에 표시할 데이터를 정의
+      labels: colors.map((color, index)=> `Color ${index +1}`), // 각 생상의 라벨을 설정
+      datasets: [{ //차트에 표시할 데이터 세트를 설정
+        data: colors.map(() => 1),
+        backgroundColor: colors,
+      }
+     ]
+    };
+    return <Pie data={data} />; // 파이 차트 렌더링 (결과를 보여주기 위한 렌더링)
+  }
+
+  
   return (
     <>
     <div className='image_palette_value_view'>
@@ -73,9 +107,16 @@ export default function Upload() {
               if(loading) return <Loading />;
               return (
                 <div>
-                  Predominant color 
-                  <strong>{data}</strong>
+                  <div>Predominant color <br/> 
+
+                  <div id='predominant_color' style={{
+                      backgroundColor: data,
+                      borderRadius: '50%',
+                      width: '80px',
+                      height: '80px',
+                    }}></div>
                 </div>
+              </div>
               )
             }}
           </Color>
@@ -89,6 +130,9 @@ export default function Upload() {
                   {data && data.map((color, index)=>(
                     <div id='palette_list' key={index} style={{ backgroundColor: color, height: '70px', width: '70px', borderRadius: '50%' }}></div>
                   ))}
+                   <div className='palette_chart'>
+                    <ColorChart colors={data} /> {/* 색상 정보를 차트에 전달 */}
+                   </div>
                 </>
               );
             }}
