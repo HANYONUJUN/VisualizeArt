@@ -1,0 +1,15 @@
+// _mixin.scss
+@mixin respond($breakpoint) {
+    @if $breakpoint == mobile {
+        @media (max-width: 767px) { @content; }
+    }
+    @if $breakpoint == tablet-portrait {
+        @media (max-width: 768px) { @content; }
+    }
+    @if $breakpoint == tablet-landscape {
+        @media (max-width: 1200px) { @content; }
+    }
+    @if $breakpoint == desktop {
+        @media (min-width: 1201px) { @content; }
+    }
+}

@@ -43,8 +43,9 @@ export default function Upload() {
     to: { transform: `translate3d(${showColorInfo ? '0%' : '100%'},0,0)` },
   });
 
-  // 각 색상의 비율을 동일하게 표시하는 파이 차트를 생성하는 함수형 ract 컴포넌트
+  // 각 색상의 비율을 동일하게 표시하는 파이 차트를 생성하는 함수형 react 컴포넌트
   function ColorChart({ colors }) {
+    
     // charRef라는 참조를 생성 , 차트의 인스턴스를 가리키는데 사용
     const chartRef = useRef<ChartJS | null>(null);
 

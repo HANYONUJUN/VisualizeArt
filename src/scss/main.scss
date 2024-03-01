@@ -1,3 +1,5 @@
+@import '../media/mixins.scss';
+
 html {
     background: #eee;
  }
@@ -11,17 +13,38 @@ html {
     padding:4%;
     box-shadow: 0px 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
 
+    @include respond(mobile){
+        margin-top: 8%;
+        margin-left: 4%;
+        border-radius: 30px;
+        background-color: #88ccff;
+        width:1%;
+        padding:46%;
+        box-shadow: 0px 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    
+    }
+
     .icon{
         margin-left:-13%;
         
         img{
             margin-left: 12%;
+            @include respond(mobile){
+                margin-left: -9.5em;
+                margin-top: -9em;
+                width: 300px;
+
+            }
         }
 
         .icon_address{
             margin-left: 27%;
             margin-top: -1%;
             font-weight: 500;
+
+            @include respond(mobile){
+                font-size: 10px;
+            }
         }
     }
 }
@@ -32,6 +55,14 @@ html {
     margin-left: 38%;
     margin-top:-30%;
     text-align: center;
+
+    @include respond(mobile){
+        font-size: 25px;
+        font-weight: 800;
+        margin-left: 2%;
+        margin-top: -44%;
+
+    }
 }
 
 .arrow{
@@ -39,6 +70,14 @@ html {
     margin-left: 66%;
     margin-top: -1%;
     animation: arrowAnimation 1s infinite;
+
+    @include respond(mobile){
+        margin-left: 48%;
+        margin-top: -12%;
+        width: 20px;
+        
+    }
+    
 }
 
 .start_btn{
@@ -50,6 +89,13 @@ html {
     border-radius: 30px;
     padding: 0.5% 3%;
     border:none;
+
+    @include respond(mobile){
+        margin-top: 25%;
+        margin-left: 34.5%;
+        font-size: 24px;
+        
+    }
 }
 
 @keyframes arrowAnimation {
