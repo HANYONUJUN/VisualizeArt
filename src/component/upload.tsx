@@ -15,6 +15,7 @@ ChartJS.register(ArcElement, CategoryScale, PieController); // Chart.js v3에서
 export default function Upload() {
   const [imageSrc, setImageSrc]:any = useState(null);
   const [showColorInfo, setShowColorInfo] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.matchMedia("(max-width: 768px").matches);
   
   const onUpload = (e) => {
     const file = e.target.files[0];
@@ -39,8 +40,8 @@ export default function Upload() {
   }
 
   const slideAnimation = useSpring({
-    from: { transform: 'translate3d(100%,0,0)' },
-    to: { transform: `translate3d(${showColorInfo ? '0%' : '100%'},0,0)` },
+    from: { transform: isMobile ? 'translate3d(100%,0,0)' : 'translate3d(100%, 0, 0)' },
+    to: { transform: `translate3d(${isMobile ? '0' : (showColorInfo ? '0%' : '100%')}, ${isMobile ? (showColorInfo ? '0%' : '100%') : '0'}, 0)` },
   });
 
   // 각 색상의 비율을 동일하게 표시하는 파이 차트를 생성하는 함수형 react 컴포넌트
@@ -53,10 +54,17 @@ export default function Upload() {
     // 차트의 인스턴스가 있다면 그 인스턴스를 파괴
     // 언마운트 시 메모리 누수 방지
     useEffect(() => {
+      const mediaQuery = window.matchMedia("(max-width: 768px)");
+      const handleResize = () => setIsMobile(mediaQuery.matches);
+
+      handleResize();
+      mediaQuery.addListener(handleResize);
+
       return () => {
         if (chartRef.current) {
           chartRef.current.destroy();
         }
+        mediaQuery.removeListener(handleResize);
       };
     }, []);
 

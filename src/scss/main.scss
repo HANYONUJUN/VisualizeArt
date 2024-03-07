@@ -30,7 +30,7 @@ html {
         img{
             margin-left: 12%;
             @include respond(mobile){
-                margin-left: -9.5em;
+                margin-left: -9.2em;
                 margin-top: -9em;
                 width: 300px;
 
@@ -57,7 +57,7 @@ html {
     text-align: center;
 
     @include respond(mobile){
-        font-size: 25px;
+        font-size: 22px;
         font-weight: 800;
         margin-left: 2%;
         margin-top: -44%;
@@ -73,7 +73,6 @@ html {
 
     @include respond(mobile){
         margin-left: 48%;
-        margin-top: -12%;
         width: 20px;
         
     }
