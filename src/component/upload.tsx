@@ -79,7 +79,12 @@ export default function Upload() {
     return <Pie data={data} />; // 파이 차트 렌더링 (결과를 보여주기 위한 렌더링)
   }
 
-  
+  const speak = (text) => {
+    const synth = window.speechSynthesis;
+    const utterance = new SpeechSynthesisUtterance(text);
+    synth.speak(utterance);
+  }
+
   return (
     <>
     <div className='image_palette_value_view'>
@@ -117,14 +122,14 @@ export default function Upload() {
               return (
                 <div>
                   <div>Predominant color <br/> 
-
-                  <div id='predominant_color' style={{
-                      backgroundColor: data,
-                      borderRadius: '50%',
-                      width: '80px',
-                      height: '80px',
-                    }}></div>
-                </div>
+                    <div id='predominant_color' style={{
+                        backgroundColor: data,
+                        borderRadius: '50%',
+                        width: '80px',
+                        height: '80px',
+                      }}></div>
+                      <button className='sound_btn' onClick={() => speak(`이미지의 대표 색상은 ${data}입니다.`)}>sound player</button>
+                  </div>
               </div>
               )
             }}
