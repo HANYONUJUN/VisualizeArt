@@ -3,11 +3,13 @@ import { useState, useEffect, useRef } from 'react';
 import { Color , Palette } from "color-thief-react";
 import { useSpring, animated } from 'react-spring';
 import { Pie } from 'react-chartjs-2';
+
 import { ArcElement, CategoryScale, Chart as ChartJS, PieController } from 'chart.js';
 import '../scss/upload.scss';
 
 const Loading = () => <div>Loading...</div>;
 ChartJS.register(ArcElement, CategoryScale, PieController); // Chart.js v3에서부터 사용되는 요소들
+
 // ArcEleement: 차트에서 호(arc)를 그리는데 사용되는 클래스, 파이 차트, 도넛 차트 등 섹션을 그리는데 사용
 // CategoryScale: 차트의 축(scale)을 그리는데 사용되는 클래스, 카테고리 형태의 데이터를 표시하는데 사용
 // PieController: 파이 차트를 제어하는데 사용되는 클래스, 파이 차트의 데이터를 관리하고, 차트를 그리는데 필요한 요소들 조정
@@ -99,8 +101,8 @@ export default function Upload() {
           }}
         >
 
-        <button className={`click-button ${showColorInfo ? 'active' : ''}`} onClick={handleClick}>Click</button>
-        
+          <button className={`click-button ${showColorInfo ? 'active' : ''}`} onClick={handleClick}>Click</button>
+
         </div>
 
         <label className="input-file-button" htmlFor="input-file">upload</label>
