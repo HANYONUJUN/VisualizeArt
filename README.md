@@ -20,3 +20,4 @@
 
 <h1>기능구현</h1>
 <li>메인 페이지</li>
+![visualizeArt main page(prototype)](https://github.com/HANYONUJUN/VisualizeArt/assets/104452243/97d2f556-14fd-4e4e-9060-fb0511be166c)
